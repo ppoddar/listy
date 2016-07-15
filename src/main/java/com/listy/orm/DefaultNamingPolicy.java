@@ -7,7 +7,7 @@ public class DefaultNamingPolicy implements NamingPolicy {
 
     public static NamingPolicy instance = new DefaultNamingPolicy();
     @Override
-    public String classToTable(Class javaClass) {
+    public String classToTable(Class<?> javaClass) {
         return javaClass.getSimpleName().toUpperCase();
     }
 

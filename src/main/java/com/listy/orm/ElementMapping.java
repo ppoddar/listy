@@ -1,10 +1,9 @@
 package com.listy.orm;
 
-import android.database.Cursor;
-
 import com.listy.schema.Column;
 import com.listy.schema.ForeignKey;
-import com.listy.util.Assertions;
+
+import android.database.Cursor;
 
 /**
  * Maps the collection elements to a table. The table has a foreign key

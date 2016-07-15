@@ -1,9 +1,8 @@
 package com.listy.orm;
 
-import android.database.Cursor;
-
 import com.listy.schema.Column;
-import com.listy.schema.Table;
+
+import android.database.Cursor;
 
 /**
  * Created by ppoddar on 7/14/16.

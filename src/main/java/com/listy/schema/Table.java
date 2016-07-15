@@ -1,13 +1,10 @@
 package com.listy.schema;
 
-import com.listy.util.Assertions;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
+
+import com.listy.util.Assertions;
 
 /**
  * Created by ppoddar on 7/13/16.

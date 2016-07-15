@@ -1,12 +1,10 @@
 package com.listy.orm;
 
-import android.database.Cursor;
+import java.lang.reflect.Method;
 
 import com.listy.schema.Column;
-import com.listy.schema.Table;
-import com.listy.util.Assertions;
 
-import java.lang.reflect.Method;
+import android.database.Cursor;
 
 /**
  * Created by ppoddar on 7/14/16.
@@ -17,22 +15,18 @@ public class BasicFieldMapping extends FieldMappingAdapter implements FieldMappi
     protected Column col;
     protected Method getter;
     protected Method setter;
-
-    private BasicFieldMapping() {
-
-    }
-
+    
     /**
      * @param owner    owner of this mapping
      * @param property instance field name.
      * @param col
      */
-    public BasicFieldMapping(TypeMapping owner, Class cls, String property, Column col) {
+    public BasicFieldMapping(TypeMapping owner, Class<?> cls, String property, Column col) {
         this(owner, cls, property, col, true);
     }
 
 
-    protected BasicFieldMapping(TypeMapping owner, Class cls, String property, Column col, boolean initMapping) {
+    protected BasicFieldMapping(TypeMapping owner, Class<?> cls, String property, Column col, boolean initMapping) {
         this.owner = owner;
         this.property = property;
         if (initMapping) {

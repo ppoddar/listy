@@ -1,10 +1,6 @@
 package com.listy.orm;
 
-import android.database.Cursor;
-
 import com.listy.schema.ForeignKey;
-import com.listy.schema.Table;
-import com.listy.util.Assertions;
 
 /**
  * Maps collection elements to a separate table
@@ -18,7 +14,7 @@ public class ContainerMapping extends BasicFieldMapping  {
      * @param property
      * @param fk
      */
-    public ContainerMapping(TypeMapping owner, Class cls, String property, ForeignKey fk) {
+    public ContainerMapping(TypeMapping owner, Class<?> cls, String property, ForeignKey fk) {
         super(owner, cls, property, fk, false);
         initMapping(Reflection.getGetter(cls, property, true),
                 Reflection.getSetter(cls, property, false),

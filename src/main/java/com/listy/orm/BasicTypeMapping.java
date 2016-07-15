@@ -1,22 +1,20 @@
 package com.listy.orm;
 
-import android.database.Cursor;
-import android.util.Log;
-
-import com.listy.schema.Column;
-import com.listy.schema.ForeignKey;
-import com.listy.schema.Table;
-import com.listy.util.Assertions;
-
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import com.listy.schema.Column;
+import com.listy.schema.ForeignKey;
+import com.listy.schema.Table;
+import com.listy.util.Assertions;
+
+import android.database.Cursor;
 
 /**
  * Created by ppoddar on 7/14/16.
@@ -98,7 +96,7 @@ public class BasicTypeMapping implements TypeMapping {
                     + " but was " + mapping.getClass());
 
             TypeMapping elementTypeMapping = ContainerMapping.class.cast(mapping).getElementTypeMapping();
-            Collection coll = Collection.class.cast(value);
+            Collection<?> coll = Collection.class.cast(value);
             for (Object element : coll) {
                     List<SQL> childSQL = elementTypeMapping.insertSQL(element, ctx);
                     sqls.addAll(childSQL);

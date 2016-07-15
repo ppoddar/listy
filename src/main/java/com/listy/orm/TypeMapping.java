@@ -1,14 +1,14 @@
 package com.listy.orm;
 
-import android.database.Cursor;
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 import com.listy.schema.Column;
 import com.listy.schema.ForeignKey;
 import com.listy.schema.Table;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import android.database.Cursor;
 
 /**
  * Maps a Type or Java Class to a Database Table.

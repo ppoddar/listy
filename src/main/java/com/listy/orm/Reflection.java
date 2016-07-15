@@ -9,7 +9,7 @@ public class Reflection {
     public static final Class<?>[] EMPTY_ARGTYPES = {};
     public static final Object[] EMPTY_ARGS = {};
 
-    public static boolean hasProperty(Class cls, String property) {
+    public static boolean hasProperty(Class<?> cls, String property) {
         return getGetter(cls, property) != null;
     }
     public static Method getGetter(Class<?> cls, String property, boolean mustExist) {

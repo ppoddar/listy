@@ -1,14 +1,14 @@
 package com.listy.schema;
 
+import java.util.Set;
+
+import com.listy.orm.ORMContext;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteTransactionListener;
-import android.util.Log;
-
-import java.util.Set;
 
 /**
  * A SQLite database for Android to insert/update/query/delete persistent Java objects.
@@ -18,6 +18,7 @@ import java.util.Set;
 public class Database extends SQLiteOpenHelper {
 
     private Object schemaIsDefined = new Object();
+    private ORMContext orm;
 
     public Database(Context ctx, String name) {
 
@@ -49,7 +50,7 @@ public class Database extends SQLiteOpenHelper {
      */
     void defineSchema(SQLiteDatabase db, Set<Class<?>> model) {
         for (Class<?> cls : model) {
-            db.execSQL(MORM.createSchemaDefinitionSQL(cls).toString());
+            db.execSQL(orm.createSchemaDefinitionSQL(cls).toString());
         }
         synchronized (schemaIsDefined) {
             schemaIsDefined.notifyAll();
@@ -58,15 +59,15 @@ public class Database extends SQLiteOpenHelper {
 
     void dropSchema(SQLiteDatabase db, Set<Class<?>> model) {
         for (Class<?> cls : model) {
-            db.execSQL(MORM.createDropTableSQL(cls).toString());
+            db.execSQL(orm.createDropTableSQL(cls).toString());
         }
     }
 
 
     public void insert(Object m) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = MORM.getContentValues(m);
-        db.insert(MORM.getTable(m.getClass()).name(), null, values);
+        ContentValues values = orm.getContentValues(m);
+        db.insert(orm.getTable(m.getClass()).name(), null, values);
     }
 
 

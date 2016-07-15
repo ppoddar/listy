@@ -1,10 +1,7 @@
 package com.listy.orm;
 
 import com.listy.schema.Column;
-import com.listy.schema.MORM;
 import com.listy.schema.Table;
-
-import java.lang.reflect.Method;
 
 /**
  * Created by ppoddar on 7/14/16.
